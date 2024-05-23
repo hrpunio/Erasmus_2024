@@ -171,12 +171,12 @@ library("dplyr")
 ## installation is automatic (upon confirmation) in RStudio
 
 ## filter all billionaires who are non US:
-nonus.forbes <- filter(forbes, country != "United States")
+nonus.forbes <- filter(forbes, country != "US")
 nonus.forbes
 
 ## Modification oprations can be connected to one sequence with %>% operator
 ## Example: filter some rows %>% select some columns:
-nonus.forbes.worth <- filter(forbes, country != "United States") %>% 
+nonus.forbes.worth <- filter(forbes, country != "US") %>% 
   select(worth)
 
 ## Compute total wealth:
