@@ -1,0 +1,103 @@
+---
+title: 'NUTS and TERYT'
+author:
+- name: Tomasz Przechlewski
+  email: t.plata-przechlewski@psw.kwidzyn.edu.pl
+  affiliation: Powiślańska Szkoła Wyższa (Kwidzyn/Poland)
+date: "2024"
+output: html_document
+description: (c) Tomasz Przechlewski / CC-BY license
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## NUTS: territorial division of EU
+
+Nomenclature of territorial units for statistics
+
+There are 97 NUTS units in Poland since 1 January 2018:
+
+NUTS 1 –- macroregions (grouping voivodships) – 7 units
+
+![](./polska_nuts1-2016.png){width=80%}
+
+NUTS 2 –- regions (voivodships or parts of a voivodship) –- 17 units
+
+NUTS 3 –- subregions (grouping powiats) – 73 units
+
+## TERYT: territorial division of Poland
+
+There are 16 provinces,
+
+380 counties and 
+
+2750 communities in Poland.
+
+As population in Poland is 38,5 mln and the area equals 312,7
+sq kilometers (120 persons per 1 sqkm) 
+on the average each powiat has 820 sqkm and each community
+has 113.5 sqkm or approximately 100 thousand persons per "powiat and 14 thousand per "gmina".
+
+**Province** in Polish is "prowincja" (due to both are from Latin) but actually
+Polish administrative provice is called **województwo**, from *wodzić* -- ie commanding (the armed
+troops in this context).  
+This is an old term/custom from the 14th century,
+where Poland was divided into provinces (every province
+ruled by a *wojewoda* ie chief of that province). 
+More can be found
+at Wikipedia (cf [Administrative divisions of Poland](https://en.wikipedia.org/wiki/Administrative_divisions_of_Poland))
+
+![](./polska_nuts3-2016.png){width=80%}
+
+A Polish county called **powiat** is 2-nd level administrative unit.
+In ancient Poland powiat was called
+*starostwo* and the head of a starostwo was called *starosta*.
+"Stary" means Old, so
+"starosta" is an old (and thus wise) person.
+BTW the head of powiat is "starosta" as 600 years ago:-)
+
+**TERYT** is an official register of the territorial division of Poland
+It is complex system which includes
+identification of administrative units.
+Every unit has (up to) a 7-digit id number: wwppggt
+where ww = "województwo" id, pp = "powiat" id, gg = "gmina" id and "t" decodes **type-of-community**
+(rural, municipal or mixed). Higher units has trailing zeros for irrelevant part of id, so
+14 or 1400000 means the same; as well as 1205 and 1205000.
+Six numbers is enough to identify
+a community (approx 2750 units).
+
+
+## NUTS
+
+```
+NUTS id : 00 00      0        00      00     000     (12 digits)
+           1. 2.     3.        4.      5.      6.    (6 groups)
+```
+
+1. macroregion/makroregion (01, 02, ..., 07) 
+
+2. province/województwo (00, 02, ..., 32) 
+
+3. region/region (1, 2)
+
+4. subregion/podregion (00, 01, ..., 73) 
+
+5. County (powiatu (00, 01, ..., 59 - powiat; 60, ..., 99 - miasto na prawach powiatu) - 2 digits
+
+6. community/gmina or part of community/części gmin (000......, gdzie ostatni znak stanowi symbol rodzaju jednostki)  - 3 digits
+
+## TERYT
+
+```
+TERYT id:  00        00      000     - 7 digits
+            1.        2.       3.
+```
+
+1. province/województw (00, 02, ..., 32)       - 2 digits
+
+2. county/powiat (00, 01, ..., 59 - powiat; 60, ..., 99 - city-county) - 2 digits
+
+3. community/gmina or part of community/części gmin (000......, gdzie ostatni znak oznacza rodzaj jednostki) - 3 digits
+

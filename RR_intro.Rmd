@@ -1,0 +1,1233 @@
+---
+title: "Statistical reproducible computing with open source tools"
+author:
+- name: Tomasz Przechlewski
+  email: t.plata-przechlewski@psw.kwidzyn.edu.pl
+  affiliation: Powiślańska Szkoła Wyższa (Kwidzyn/Poland)
+date: "2024"
+output: html_document
+---
+
+## The problem with statistics
+
+**Lies, damned lies, and statistics**
+
+The above well known quotation is attributed to Benjamin Disraeli (UK Prime Minister)
+
+## How to lie with statistics
+
+Less known book by Darrell Huff (142 pages/a5)
+
+![This is not Darrell Huff but look what Bill Gates recommended in 2015](./summer-books_2015_1200px_v1.jpg)
+
+https://www.gatesnotes.com/About-Bill-Gates/Summer-Books-2015?WT.mc_id=05_19_2015_SummerBooks_GeekWire
+
+BTW: this photo (taken in 2015) coupled with the fact that Gates funded the
+epidemiology research at John Hopkins University has become "evidence"
+for various morons (of which the are plenty in the USA),
+that Gates was behind the COVID19 pandemic
+
+A book written by Darrell Huff in 1954 presenting an introduction to
+statistics for the general reader.
+Not a statistician, Huff was a journalist [...]
+     
+In the 1960/1970s, it became a standard textbook introduction to
+the subject of statistics for many college students [...]
+one of the best-selling statistics books in history.
+
+https://en.wikipedia.org/wiki/How_to_Lie_with_Statistics
+
+![](./CoverHuff.jpg)
+
+The book consists of 10 chapters and is written in a provocative,
+way (unscientific). Individual chapters are so well known that
+if you enter the title of the chapter into google will return
+hundreds of thousands references
+
+ch1: The Sample with the Built-in Bias (ie it is very difficult to draw
+     unbiased/perfect random sample) 
+
+ch2: The Well-Chosen Average. You can manipulate average value in various ways:
+     using various averages/using different definitions of averaged units/measuring
+     in various ways
+
+ch3: The Little Figures That Are Not There (Figures = Details)
+     Reporting results w/o context or important information in short
+
+ch4: Continuing #ch3 insignificant results = difference is of no practical meaning.
+
+ch5: The Gee-Whiz Graphs (Statistical graphs
+     in cartesian coordinates with OY axis not starting from zero)
+     https://en.wikipedia.org/wiki/Gee_Whiz →
+     https://en.wikipedia.org/wiki/Misleading_graph
+
+ch6: The One-Dimensional Picture  (comparing 1D quantities  using 2D or pseudo-3D)
+     https://thejeshgn.com/2017/11/17/how-to-lie-with-graphs/
+
+ch7: The Semiattached Figure.
+     Using one thing as a way to claim proof of something else, 
+     even though there's no correlation between the two (not attached)
+     https://www.secjuice.com/the-semi-attached-figure/
+
+ch8: Post Hoc Rides Again (Correlation is not causation)
+
+ch9: Misinforming people by the use of statistical material 
+     might be called statistical manipulation, in a word, **Statisticulation**.
+     (summary of ch1--ch8)
+
+ch10: How to Talk Back to a Statistic
+     (How not to be deceived)
+
+Who Says So? (interested parties can be unreliable; car seller reputation is poor);
+     
+How Does He Know? (measurement is often unreliable);
+     
+What’s Missing? (incomplete analysis signals bias);
+     
+Many figures lose meaning because a comparison
+is missing. In Poland there was a public discussion about falling fertility--
+women in Poland do not give birth to children; the average age of a mother at the birth
+of her first child is 27 years. [It is a norm in a whole Europe]
+
+Did Somebody Change The Subject? (beware of the Semiattached Figure)
+     
+Does It Make Sense? (forget about statistics and think about common sense)
+
+Despite its mathematical base, statistics is a much an art as it is a science (Huff p. 120)
+
+## Is it better now?
+
+Unfortunatelly quite opposite...
+
+Misleading statistical analyzes are still doing quite well if not better than in Huff's times,
+which is probably due to the following factors:
+
+* the number of statisticians has increased exponentially, often amateurs (everyone
+  can count something easily today)
+
+* the amount of readily available data has increased exponentially too
+
+
+## Fake news hype
+
+Numbers disguised as a result of a statistical analysis are often used to persuade
+something to somebody. Statistical charts are ubiquitous now and many of them are fake...
+
+Why people believe in numbers uncritically?
+
+They believe as they are **innumerate**. 
+Why people are innumerate? 
+
+People are illiterate because they failed to learn how to read and write. 
+Simple...
+
+Perhaps people are innumerate
+not because of **genetic load** or some other disaster,
+but simply becuase they are not educated?
+
+
+## Statistical value chain
+
+Four stages of statistical data analysis:
+
+![](./Stat_Cycle.png)
+
+a Statistical Value Chain (SVC) is a part of SEC, namely
+contains Data/Analysis/Conclusions stages:
+
+![](./SAnalasis1.png)
+
+Value chain refers to activities involved in **adding value** to the product at each stage of its processing, 
+from inception to distribution and beyond
+
+cf https://en.wikipedia.org/wiki/Value_chain
+
+Statistical VC adds value to data
+
+## Pitfals of teaching statistics
+
+In my opinion based on personal experience (years of lecturing at Economics departments):
+
+* starting from clean data 
+
+* focusing on intricaties of statistical methods
+
+* almost omitting everything elese
+
+Omitting stage one results in excessive trust in statistics which is regarded as part of math and
+thus 100% reliable while in reality it is not. 
+
+Omitting stage five results in inability to read or to communicate
+the results of statistical analyses.
+
+**Less theory, more practice with data, and common sense**.
+
+## Statistics in 3 words
+
+data + procedures (theory of statistics) + tools
+
+### Data
+
+Messy and unreliable
+
+Usually complicated
+
+Not clean (needs extra effort before can be analysed)
+
+### Procedures
+
+you know them too well :-)
+
+### Tools
+
+**spreadsheets (Excel)**
+
+store data + transform data + apply procedures + copy/paste results
+
+Actually not complete statistics program. What is missing:
+
+* lack of build-in missing value
+
+* many procedures are unavailable (ANOVA for example) 
+  or cumbersome to use
+  (chi-squared test of independence for example)
+
+* poor accuracy/unreliable results
+
+* Poor automation. Usually one have to do a lot 
+  of manual copy-pasting and/or mouse clickig/moving
+
+Rule of thumb: sufficient for economical statistics; unsufficient
+for other domains. IMO: **the sooner someone learns something else, the better**
+
+**SPSS/JASP**
+
+SPSS is commercial and expensive/JASP is free.
+Psychology/sociology oriented
+
+**Gretl**
+
+Econometrics (open software)
+
+
+## Reproducible research or how to make statistical computations more meaningfu
+    
+Abandoning the habit of secrecy in favor of process transparency and
+peer review was the crucial step by which alchemy became chemistry.
+Eric S. Raymond, E. S. The art of UNIX programming: Addison-Wesley.
+
+Replicability vs Reproducibility
+
+Hot topic: google: reproducible+research = 476000 (2/6/2023)
+
+**Replicability**: independent experiment targetting the same question
+will produce a result consistent with the original study.
+  
+**Reproducibility**: ability to repeat
+the experiment with exactly the same outcome as
+originally reported
+
+Sounds easy? But it is not. 
+
+* To repeat the analysis one must has
+access to **data** and **tools** (ie programs) and one has to know
+how the analysis was performed (detailed description what was done)
+
+* Excel is not a standard
+
+* Reports published in scientific journals lacks data and the
+description is faaaar from complete
+
+Computational science is facing a credibility crisis: it's impossible
+to verify most of the computational results presented at conferences
+and in papers today. (Donoho D. et al 2009)
+
+We can modify our 3 words definition of statistics:
+
+## Statistics in 4 words
+
+data + procedures (theory of statistics) + tools + analysis description
+
+RR possible if all above is available.
+
+But
+
+It can be available in several forms:
+
+
+## Australopithecus (Current practices)
+
+1. Enter data in Excel/OOCalc to clean and/or make explanatory analysis.
+
+   Use Excel for data cleaning & descriptive statistics
+   Excel handles missing data inconsistently and sometimes incorrectly
+   Many common functions are poor or missing in Excel
+
+2. Import data from Spreadsheet into SPSS/SAS/Stata for serious analysis
+
+   Use SPSS/SAS/Stata in point-and-click mode to run serious
+   statistical analyses.
+
+3. Prepare report/paper: copy and paste output to Word/OpenOffice, add
+   description.
+
+4. Publish (repeat 1--4 repeat in a year on a larger dataset).
+  
+Problems
+
+Tedious/time-wasting/costly.
+
+Even small data/method change requires
+extensive recomputation effort/careful report/paper revision and update.
+
+Error-prone: difficult to record/remember a 'click history'.
+
+Famous example: Reinhart and Rogoff controversy
+Countries very high GDP--debt ratio suffer from low growth. However the study
+suffers serious but easy identifiable flaws which were discovered when
+RR published the dataset they used in their analysis
+(cf [Growth_in_a_Time_of_Debt](https://en.wikipedia.org/wiki/Growth_in_a_Time_of_Debt))
+  
+Outcome: RR in theory only
+  
+  
+## Homo habilis (Enhanced current practices)
+
+1. Abandon spreadsheets.
+
+2. Abandon point-and-click mode. Use statistical scripting
+   languages and run program/scripts.
+
+Benefits
+
+Improved: reliability, transparency, **automation**, maintanability.
+Lower costs (in the long run).
+
+Solves 1--2 but not 3--4 (Publishing).
+
+Problems: Steeper learning curve.
+Perhaps higher costs in short run.
+Duplication of effort (or mess if scripts/programs are poorly documented).
+
+## Homo Erectus (Literate statistical programming)
+
+Literate programming concept:
+
+**Program code and description in one document**. 
+
+Statistical computing code is embedded inside descriptive
+text. Literate statistical program is turned into
+report by executing code and inserting the results obtained.
+
+Solves 1--4.
+
+## LSP: Benefits/Problems/Tools
+
+* Reliability: Easier to find/fix bugs or to avoid errors when 
+  repeating the [modified] analysis
+
+* Efficiency: automated computing. Repetitive tasks are performed automatically
+
+* Institutional memory. LSP documents are better for storage
+
+Problems of LSP: Many incl. costs and learning curve
+
+## LSP Tools
+
+* Document formatting language: Rmarkdown (variant of Markdown)
+
+* Statistical programming language: R
+
+## There is a life without speadsheet too: R and Rstudio
+
+R is both *programming language*  for statistical computing and graphics and 
+a software (ie application) to execute programs written in R.
+R was developed in mid 90s  at the University of Auckland 
+(New Zealand).
+
+Since then R has become one of the dominant software environments for data analysis and is used by a variety of scientific disiplines.
+
+BTW why it is called so strange (R)? Long time ago it was popular to use short names for computer languages
+(C for example). At AT&T Bell Labs (John Chambers) in mid 70s a language oriented towards statistical
+computing was developed and called S (from Statistics). R is one letter before S in an alphabet.
+
+Rstudio is an *environment* through which to use R. In Rstudio one can simultaneously write code, execute
+code it, manage data, get help, view plots. Rstudio is a commercial product distributed
+under dual-license system by RStudio, Inc. Key developer of RStudio is Hadley Wickham 
+another brilliant New Zealander (cf [Hadley Wickham](https://en.wikipedia.org/wiki/Hadley_Wickham) )
+
+Microsoft invest heavily into R development recently. It bought Revolution Analytics a key 
+developer of R and provider of commercial versions of the system. With MS support the system
+is expected to gain more popularity (for example 
+by integrating it with popular MS products)
+
+## Programming is difficult
+
+True, but we are talking about scripting ie. easy programming
+
+Programming in spreadsheet is difficult too
+
+## Learning resources and data banks
+
+**Learnig resources**
+
+* [Rstudio](https://www.rstudio.com/resources/cheatsheets/)
+
+* [Making Data Meaningful](https://www.unece.org/stats/documents/writing/)
+
+* [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/)
+
+* Supplementary resources 
+to my lecture (slides/data/R scripts etc) are available at:
+[https://github.com/hrpunio/Z-MISC/tree/master/Erasmus/2019/Batumi](https://github.com/hrpunio/Z-MISC/tree/master/Erasmus/2019/Batumi)
+
+
+**Data banks**
+
+* [Polish Main Statistical Office](https://stat.gov.pl/)
+
+* [Bank Danych Lokalnych (Local Data Bank)]()https://bdl.stat.gov.pl/BDL/start)
+
+* [Eurostat (European Union Statistical Office)](https://ec.europa.eu/eurostat/data/database)
+
+* [My github repository](https://github.com/hrpunio))
+
+## Geo resources
+
+* [GISCO](https://ec.europa.eu/eurostat/web/gisco/overview)
+
+* [NUTS downolad page](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts)
+
+* [TERYT download page](http://eteryt.stat.gov.pl/eTeryt/rejestr_teryt/udostepnianie_danych/formy_i_zasady_udostepniania/formy_i_zasady_udostepniania.aspx?contrast=default)
+
+* [World Borders Dataset](http://thematicmapping.org/downloads/world_borders.php)
+
+* [QGIS tutorials](https://www.qgistutorials.com/en/docs/)
+
+* [gis.stackexchange.com](https://gis.stackexchange.com/)
+
+
+## The problem
+
+First step in computer analysis is transforming data from row to
+clean. This is tedious.  The best approach is to automate it with some
+computer program.
+
+Data wrangling: https://en.wikipedia.org/wiki/Data_wrangling
+
+## Basic facts
+
+R is a computer language. There is a computer program called R (R.exe
+in MS Windows which can execute R programs (often called scripts.)
+
+So to compute something one has to write a script using R syntax,
+and then run this script with R.
+
+Sounds scary, but you don't to be a programmer to use R.
+
+## R vs Excel
+
+Excel: data + functions
+
+Load spreadsheet, apply functions to data (usually ranges)
+
+Example: **compute mean, median and standard deviation**
+
+Put cursor in a cell; mark region usually column; apply `mean(column)`
+repeat for `median` and  `stdev`
+
+
+R: otherway: functions + data (usually invisible)
+
+Example: **compute mean, median and standard deviation**
+
+load data from external file (`FB2020.csv`)
+into something called dataframe which is an internal data structure divided
+into columns similar to spreadsheet;
+
+```
+df <- read.csv("FB2020.csv")
+mean(df$column); median(df$column); sd(df$column)
+```
+
+Easy?
+
+
+**Difference**:
+
+R: data invisible, program (how the data is processed) visible;
+in Excell the other ways round
+
+The bigger the dataset the more cumbersome an Excel-aproach is (IMO)
+
+**Moreover data + functions is not the whole story**
+
+**Meaningful data analasis: data + functions + description**
+
+without *description* it is difficult to understand the details and
+results of analysis, so:
+
+
+Excel: data + functions + description
+
+**Problem**: all is intermixed, usually if one changes the data (add more rows)
+one has to modify the functions (ranges)
+
+R: separates data/functions/descriptions
+
+Comments (descriptions) starts from `#`; data are external
+to program so functions has not to be modified if dataset is enlarged
+
+```
+# Source: https://www.forbes.com/real-time-billionaires/
+df <- read.csv("FB2020.csv")
+# Compute mean, median
+mean(df$column); median(df$column);
+# Compute standard deviation
+sd(df$column)
+```
+
+Conclusion: with R data analysis is meaningful and easier
+
+## R program execution 
+
+The most elementary way
+
+```
+Rscript file.R
+```
+
+## Program structure (for the begginers)
+
+A program is divided into **expressions**
+
+Expressions consists of  **variables**, **operators** and **functions**
+
+Variables contains values (ie data); more on that below.
+
+Operators are `+`, `-`, `*` etc. So `x + y` is a expression
+with two variables (`x` and `y`) and `+` operator in between.
+As expected the meaning of the expression is add *x to y*.
+
+Functions are similar to Excel functions, ie build-in
+formulas which performs specific calculations. Functions have
+*arguments* (in Excel typically ranges.)
+Example `sd(x)/mean(x)` (compute standard deviation of `x`,
+divide by mean of `x`.)
+
+Comments starts from `#`, they are ignored while program
+is executed
+
+Expressions are executed sequentailly from the first to the last
+
+## Variables
+
+A variable can be simple (single value) or complex (many values, ie vector)
+
+A variable have a **type** (as in Excel but in excel it is less explicit)
+
+## Simple data types
+
+As in all other computer languages:
+
+numeric (ie numbers), 
+
+characters (strings),
+
+complex numbers (not used by economists) 
+
+and logical(`T`/`F`)
+
+One can assign value to variable with '<-' (assignment) operator
+
+**Numeric type**
+
+```
+x <- 5
+y <- 8
+x + y # prints 13
+```
+
+Variable `x` is assigned a value of 5;
+variable `y` is assigned a value of 5. Expression `x +y` is evaluated
+and the resulting value printed
+
+```
+z <- x + y
+```
+
+Nothing is printed. The resulting value if assigned to `z`.
+
+**Character type**:
+
+```
+x <- '5'
+y <- "8"
+x + y ## error non-numeric arguments
+```
+
+You can't perform math on non-numeric data.
+
+In Excel such operations are often silently ignored (for example
+sum of the range containing non-numeric cells is equal to total value of numeric cells--if a cell is non numeric by mistake such an error is difficult to detect)
+
+**Logical type**
+
+Only two values `TRUE` (abbreviated to `T`) or `FALSE` (`F`)
+
+```
+> x <- T
+> x
+[1] TRUE
+```
+
+
+### Datatype checking/conversion
+
+`x` is a variable (aka an **object** or **name**);
+object is assigned a value (5)
+
+```
+x <- 5
+## str(ucture) of an object x
+str(x)
+num 5
+x <- "5" ## lub '5'
+str(x)
+chr "5"
+```
+
+Note: `str` is a function. The meaning of that function is
+to show the datatype of the argument (`num` means numeric; `chr` means
+character)
+
+**conversion (`as.someDataType`)**
+
+There are useful functions to convert one datatype to another
+
+```
+y <- as.numeric(x) + 1
+print (y) ## or y 
+
+## as.character 
+## as.logical
+```
+
+### Basic operations:
+
+numbers: arythmetic (like in school): `+`, `-`, `*`, `/` etc...
+
+strings (of characters): 
+
+concatenation `paste(x, y, z...)`
+
+length of string `x` `nchar(x)`
+
+```
+paste("abra", "ca", "dabra")
+## no spaces inserted
+paste0("abra", "ca", "dabra")
+
+nchar(paste0("abra", "ca", "dabra"))
+##or
+abraC <- paste0("abra", "ca", "dabra")
+nchar(abraC)
+
+```
+
+Note: `paste`, `paste0`, `nchar` are  functions of courese
+
+## Data structures (complex data types)
+
+Vectors, matrices (multi-demensional vectors), **frames** 
+
+## Vectors
+
+```
+vector <- c(c1, c2, ...)
+## example
+v <- c(x, y)
+```
+
+**Slicing (getting/refering to part of vector**
+
+```
+v[i] where i is a vector of integers (indices of vector elements)
+
+v[c(1, 2, 3)]
+v[1:3]
+v[seq(1, 6, by=2)]
+```
+
+**Logical vectors**
+
+Logical vectors contains `T`/`F` only
+
+Very useful feature for easy slicing:
+
+```
+lv <- c (T, F, F, T)
+v <- c (1, 2, 3, 4)
+v[lv] # returns (1,4)
+```
+
+Logical vector usually is created with
+some logical statment involving existing vectors. Lets assume
+`age` is a vector of ages:
+    
+```
+age <- c(18, 45, 60, 23, 11, 55, 2)
+young <- age < 24
+young
+[1]  TRUE FALSE FALSE  TRUE  TRUE FALSE  TRUE
+```
+
+`young` is a vector of `T/F`'s if an element of `age` was less than 24
+the relevant element of `young` is `T` otherwise is `F`.
+
+
+Logical operations: `&` (and), `|` (or),  `%in%` (in a set)
+
+```
+young_and_old <- age < 24 | age > 50
+## returns
+is_young_and_old 
+[1]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+```
+
+**Slicing**
+
+Vector `is_young_and_old` contains T/F values but
+`age[is_young_and_old]` contains actual values for young and old:
+
+```
+age[is_young_and_old ]
+[1] 18 60 23 11 55  2
+```
+This is useful way of filtering datasets
+
+Another example of filtering (slicing):
+
+```
+sex <- c("m", "m", "f", "m", "f", "f")
+# Which values of sex are m?
+which(sex == "m")
+## [1] 1 2 4
+## but
+sex[sex == "m"]
+## or
+sex[which(sex == "m")]
+[1] "m" "m" "m"
+```
+
+## Missing value
+
+Missing values are common in datasets. 
+
+There is no build-in way of denoting missing value in spreadsheets 
+(because they are not intended for serious statistical analysis);
+
+Users invents some special marks or values for that (`x` or `-999` for example);
+of course it is patchwork solution, prone to errors
+
+Lack of build-in missing value is a **disqualifying feature** of
+(or why spreadseet is spread-shit)
+
+There is build-in missing value in R denoted as `NA` variable.
+
+```
+age1 <- NA
+##is.na(x) which element is NA
+is.na(age1)
+[1] TRUE
+
+## append NA to age (age contains NA now)
+age <- c (age, NA)
+age
+[1] 18 45 60 23 11 55  2 NA
+
+is.na(age)
+[1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+
+which(is.na(age))
+[1] 8
+## eighth is TRUE
+```
+
+In R handling of NA is explicit while in Excel it is often undocumented
+
+
+###  Useful tricks
+
+```
+v[i] <- newValue
+
+##i maybe vector or logical vector
+
+v[6:10] <- 0
+v[c(1,7,9)] <- (1,2,3)
+
+## seq useful function
+x = seq(1,5)
+x[c(1,4,5)] <- c(0, -1, -2)
+x
+[1] 0  2  3 -1 -2
+
+## also
+seq(2, 10, by=2)
+```
+
+## Data Frames (DF)
+
+A workhorse for statistical analysis (equivalent of spreadsheet)
+
+
+### Create DF
+
+To create a **dataframe** from vectors, use the `data.frame()`
+which creates a dataframe from **named columns**:
+
+```
+df <- data.frame("name1" = c(...), "name2" = c(...), ...)
+```
+
+**Useful functions**:
+
+
+`names(df)` -- return colum names
+
+`df$c` -- returns column `c`
+
+`df[c]` -- returns colums (`c` is character vector of column names) ie
+  `df[c("c1", "c5")]`
+
+adding columns: `df$newCol <- c(...)` creates new column `newCol` 
+
+
+**Renaming column names**:
+
+```
+names(df)[1] <- "newName" ## change column one name to newName
+
+##better way:
+names(df)[names(df) == "someName"] <- "newName"
+
+## in general: 
+
+names(df)[c(1,3)] <- c('newC1', 'newC2')
+```
+
+
+### Slicing with [, ]
+
+Just like vectors, you can access specific data in dataframes using
+brackets. But now, instead of just using one indexing vector, we use
+two indexing vectors: one for the rows and one for the columns. To do
+this, use the notation data[rows, cols], where rows and columns are
+vectors of integers.
+
+if rows or cols blank then = all rows / all cols, ie df [r, ] or df[, c]
+
+`n:m` sequence from n to m
+`c(n,m)` vector of two elements n,m
+
+### Slicing with logical vectors
+
+Indexing dataframes with logical vectors is almost identical to
+indexing single vectors. First, we create a logical vector containing
+only TRUE and FALSE values. Next, we index a dataframe (typically the
+rows) using the logical vector to return only values for which the
+logical vector is TRUE.
+
+```
+df[lv, ]
+```
+
+### Conversion to DF
+
+`is.data.frame(x)` returns `T` if x is a DF
+
+`as.data.frame` conversion to DF (if possible)
+
+```
+x <- "Silly example"
+dfx <- as.data.frame(x)
+
+dfx
+             x
+1 Silly example
+is.data.frame(dfx)
+[1] TRUE
+```
+
+In the above silly example `dfx` is a dataframe with one colum
+and one row. The column name is  `x`.
+
+
+
+## Data import from external files 
+
+All formats are supported (including) Excel but preferred is CSV
+
+Typical usage (argument `na.strings` declares which value is NA):
+
+```
+## string "NA" is declared as NA
+## header=T declares that first row contains variable names
+## sep=";" declares that values are separated by ';'
+## dec="," declares that decimal part is separated by , (continental standard)
+
+df <- read.csv(fileName.csv, sep = ';', dec = ",",  header=T, na.string="NA");
+
+## or
+
+df <- read.csv(fileName.csv, sep = ';', dec = ",", 
+  header=F
+  col.names = c('var1', 'var2'),
+ colClasses = c('factor', 'factor', 'character', 'character', 'numeric', 'numeric'));
+```
+
+`col.names` declares column names ; 
+
+`colClasses` declares column types
+
+This is the simples form of **loading the data** into R.
+
+## Some useful R commands 
+
+One can skip this on first reading :-)
+
+One can perform pretty complex data analysis with dataframes and
+build-in functions only, without user-defined functions, loops or conditional execution.
+
+### Conditional execution
+
+```
+if (condition) statement-if-true else statement-if-false
+## examples
+if (x <5) print ('Mniej niż 5')
+if (x <= 5) { print '5 lub mniej'} else {print '6' }
+ 
+```
+
+Vectorized `if`: `test`/`yes`/`no` are vectors containing equal number
+of elements (equal length):
+
+```
+ifelse(test, yes, no)
+```
+
+for every element of vector `test` if this element value is `T` returns 
+element from `yes` or `no` in the opposite:
+
+```
+## silly example:
+test <- c(F, F)
+a <- c('1', '2')
+b <- c(0, 0)
+ifelse(test, a, b)
+[1] 0 0
+```
+
+### Loop
+
+Rarely used. Use vector operations instead
+
+```
+for (v in sequence) { ... }
+## Example
+for (i in 1:10) { print(i) }
+cc <- c(1,2,3)
+for (c in cc ) { print (c *c)}
+
+## or
+while (test) { ... }
+## Example
+c <- 1; while (c < length(cc)) {print (cc[c]); c=c+1 }
+```
+
+### Functions
+
+or why spreadseet is spread-shit again (well the latest Excel 
+supports user-defined functions):
+
+
+```
+function_name <- function(args) { body }
+```
+
+## Packages
+
+Packages provides extra build-in functions
+
+To use these functions one has to attach a package 
+which provides them
+(with `library("package-name")` function)
+
+Some libraries are really essential: `tidyr` and `ggplot2`
+
+Example:
+
+```
+library("package")
+
+## if not installed call install.packages first:
+## install.packages(c(p1, p2, p3))
+## example
+## install.packages("tidyverse") 
+## or
+## install.packages("dplyr", "tidyr", ggplot2") 
+```
+
+The principal author of `dplyr`, tidyr` and `ggplot2` is Hadley Wickham --
+a brilliant R developer from New Zealand.
+
+Package `tidyverse` is an umbrella package for `dplyr`, `tidyr`
+and `ggplot2` (and a few more packages)
+
+
+## Data wrangling/manipulation (`tidyverse`)
+
+In short it provides functionality 
+of **pivot tables** in Excel, but much better
+
+**Useful operators (defined in `tidyverse`)**:
+
+`%>%` pipeline operator
+
+formally: passes object from the left to the function from the right as its (this function)
+first (implicit) argument
+
+```
+## typical usage, df and ndf are dataframes:
+ndf <- df %>% some_function() 
+
+## instead of 
+ndf <- some_function(df)
+```
+
+Looks silly but, very useful in complex transformations (see examples);
+if one performs many transformations on dataframes one can arrange 
+the whole process as follows:
+
+```
+resulting_df <- initial_df %>% fun1() %>% fun2() %>% fun3() ...
+```
+
+**Useful functions (defined in `tidyverse`)**
+
+
+`group_by(df, cols)` group `df` by values of columns from vector `cols`
+
+```
+## group by country and year
+group_by(df, country, year)
+##
+group_by(df, country, sex, year)
+```
+But, if one use '%>%' operator, the first argument is implicit,
+so the syntax is:
+
+```
+df %>% group_by(country, year)
+```
+
+
+`arrange(cols)` sort by `cols` (`desc()` for reverse)
+
+```
+## example
+arrange(country, desc(year))
+```
+
+`filter(condition)`  returns rows for which `condition=T`
+
+```
+## examples
+filter(age > 30)
+filter(age > 30 & age < 50)
+filter(age == 18) ## equality 
+```
+
+`c %in cvector` returns T is `cvector` contains `c`
+(c/cvector are string/string vector)
+
+
+```
+## More examples
+filter(c1 < 5 & c5 %in% cc )
+
+## kraj = country in Polish
+kraje <- c('PL', 'CS', 'DE')
+##
+## tylko wiersze dla PL/CS/DE
+filter(kraj %in kraje)
+```
+
+`select(cnames)` returns only columns declared in vector `cnames`
+
+```
+## rok = year in Polish
+select(kraj, rok)
+
+```
+get rid of all columns except `kraj` and `rok`
+
+
+`distinct()` remove row duplicates
+
+```
+## which countries are in DF?
+select(kraj) %>% distinct()
+
+```
+
+`mutate(c1, c2, c3)` computes new columns
+
+```
+## Compute mean of column age from frame df
+mean.age <- mean(df$age)
+
+## now age is computed as %% of the mean
+ndf <- df %>% mutate (age = age / mean.age * 100 ) 
+
+## cumulative sum of nc ad squared t
+ndf <- df %>% mutate(snc = cumsum(nc), sqt = t*t) 
+```
+
+
+`summarise(c1, c2, c3)` summary values; used with `group_by`
+
+```
+## colum cases contains number of COVID case in a province (woj) and a week
+##
+## summary number of cases by week
+group_by(week) %>% summarise(cases = sum(cases))
+
+## summary weekly number of cases by province
+group_by(woj) %>% summarise(m= mean(cases))
+```
+
+summary functions: `mean`, `sum`, `median`, `first`, `last`,  `n` (number of rows)
+
+
+**More useful functions: joining dataframes**
+
+By values of common column
+
+`left_join(x, y, by=c)` join `x` with `y` by common values
+from column `c` (`c` can be a vector defining joining set of columns)
+
+```
+z <- left_join(x, y, by="c")
+## column c in x but d in y:
+z <- left_join(x, y, by=c("c"="d"))
+## by two columns
+z <- left_join(x, y, by=c("c"="d", "e"="f"))
+```
+
+Vertically
+
+`z <- bind_rows(x, y)` bind frames `x` and `y` (append rows from `y` to `x`)
+
+Binding is successful if the structure of both dataframes are identical
+(numer/datatype of columns) for obvious reason.
+
+
+**More useful functions: reshaping data frame**
+
+Basically data can be in wide and long format; the difference
+is depicted below
+
+![](./pivot_longer_data.png)
+
+
+`pivot_longer (cols, name_to=ncolumn, values_to=vcolumn)` --
+pivot from wide to long. Where:
+`cols` are column names to pivot;
+column names are values in column `ncolumn`;
+values are values in column `vcolumn`
+
+Example:  column `pl` contain COVID cases for PL;
+column `cz` contain COVID cases for CZ;
+column `de` contain COVID cases for DE. We apply `pivot_longer`
+
+
+```
+ndf <- df %>%
+pivot_longer(cols = c(pl, cs, de), 
+   names_to = "kraj", values_to = "zakazenia")
+```
+
+Now `ndf` contains 2 columns `kraj` and `zakazenia` (cases in Polish) while original
+frame has 3 columns (pl, cs, de); Almost the same but if we have 27 countries
+and will perform similar transformation we still end up with 2 columns (instead of 27).
+
+In databases redefining column structure is costly, 
+while adding rows is no-problem.
+
+`pivot_wider(names_from = ncolumn, values_from = vcolumn)` 
+reverse of
+`pivot_longer` transforms *long* format to *wide* format. Names of the columns are
+from `ncolumn`; values are from `vcolumn`
+
+```
+ndf <- df pivot_wider(names_from = kraj, values_from = zakazenia)
+```
+
+## Charts (ggplot2)
+
+
+see separate document
+
+### CLI
+
+One can skip this on first reading :-)
+
+Command line interface (or CLI)
+
+```
+library("optparse")
+
+option_list <- list(
+  make_option(c("-y", "--year"), action="store", default="2017", type="character"),
+  make_option(c("-v", "--verbose"), action="store_true", default=F, type="logical")
+  );
+
+opt_parser <- OptionParser(option_list=option_list);
+opt <- parse_args(opt_parser);
+
+currentYr <- opt$year
+verboseMode <- opt$verbose
+```
+
+then
+
+```
+myScript -y 2022
+````
+
+runs script with `2022` assigned to `currentYr` 
+
+## Reporting (printing values)
+
+```
+## print contents of DF
+df
+print(df)
+## df contains col1, col2, col3, col4...
+## for df print col1, col2, and col4
+## format col1 as string
+## format col2 as real number with 2 digits precision
+## format col3 as integer:
+
+with(df, sprintf ("%s %.2f %i", col1, col2, col4))
+```
+## No statistics so far
+
+Next
+
+```
+r-intro-forbes.R
+```
+
