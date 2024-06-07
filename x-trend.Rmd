@@ -1,0 +1,94 @@
+---
+title: 'Trend in GDP for Poland 1990--2022'
+author: Tomasz Przechlewski
+date: "June/2024"
+output: html_document
+description: (c) Tomasz Przechlewski / CC-BY license
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library('WDI')       ## easy import from WBank
+## We need forecast to easily compute linear trend
+library("forecast")  ##
+library("tidyverse")
+
+## example indicator: GDP constant prices
+wdi.indicators <- c(
+  'NY.GDP.MKTP.KD'   #= GDP (constant 2015 US$)
+)
+
+year.start <- 1990
+```
+
+## The data
+
+The data comes from the WorldBank databse. The following indicator is used:
+
+*  'NY.GDP.MKTP.KD' = GDP (constant 2015 US$)
+
+```{r}
+d0 <- WDI(wdi.indicators, country = "POL", start=year.start)
+
+## transform the data
+d1 <- d0 %>% arrange(NY.GDP.MKTP.KD) %>%
+  ## remove missing values
+  na.omit()
+
+## start = 1990 denotes number of the first year
+gdp <- ts(d1$NY.GDP.MKTP.KD, start=1990)
+```
+
+## Data description
+
+```{r}
+## summary statistics
+summary(gdp)
+## simple plot
+plot(gdp)
+```
+
+## Estimating line trend
+
+$$GDP = a + b · t$$
+
+```{r}
+m0 <- tslm(gdp ~ trend )
+summary(m0)
+```
+
+Shortly describe results...
+
+## Forecast
+
+One period ahead foreast (ie for 2023)
+
+```{r}
+f0 <- forecast(m0, h=1, level=95)
+f0
+
+plot(f0)
+```
+
+## Log-linear trend model
+
+$$log(GDP) = a + b · t$$
+
+
+```{r}
+## log(gdp) ~ trend
+m1 <- tslm(log(gdp) ~ trend )
+summary(m1)
+```
+
+One period ahead foreast (ie for 2023)
+
+```{r}
+# Forecast and plot
+f1 <- forecast(m1, h=1, level=95)
+f1
+
+plot(f1)
+```
+
